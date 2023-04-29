@@ -7,7 +7,6 @@ defmodule Rumbl.Accounts.User do
     field :username, :string
     field :password, :string, virtual: true
     field :password_hash, :string
-
     timestamps()
   end
 
@@ -27,12 +26,12 @@ defmodule Rumbl.Accounts.User do
     |> put_pass_hash()
   end
 
-  def put_pass_hash(changset) do
-    case changset do
+  def put_pass_hash(changeset) do
+    case changeset do
       %Ecto.Changeset{valid?: true, changes: %{password: pass}} ->
-        put_change(changset, :password_hash, Pbkdf2.hash_pwd_salt(pass))
+        put_change(changeset, :password_hash, Pbkdf2.hash_pwd_salt(pass))
       _ ->
-        changset
+        changeset
     end
   end
 
