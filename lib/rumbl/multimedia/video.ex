@@ -7,8 +7,8 @@ defmodule Rumbl.Multimedia.Video do
     field :title, :string
     field :url, :string
     field :user_id, :id
-
-    timestamps()
+    field :created_at, :utc_datetime_usec
+    field :updated_at, :utc_datetime_usec
   end
 
   @doc false

@@ -6,8 +6,8 @@ defmodule Rumbl.Repo.Migrations.CreateUsers do
       add :name, :string
       add :username, :string, null: false
       add :password_hash, :string
-
-      timestamps()
+      add :created_at, :timestamptz
+      add :updated_at, :timestamptz
     end
 
     create unique_index(:users, [:username])
