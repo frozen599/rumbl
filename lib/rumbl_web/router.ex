@@ -6,7 +6,7 @@ defmodule RumblWeb.Router do
     plug :fetch_session
     plug :fetch_live_flash
     plug :put_root_layout, {RumblWeb.LayoutView, :root}
-    plug :protect_from_forgery
+    #plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug RumblWeb.Auth
   end
@@ -24,7 +24,7 @@ defmodule RumblWeb.Router do
   end
 
   scope "/", RumblWeb do
-    pipe_through [:browser, :authenticate_user]
+    pipe_through [:browser]
     resources "/videos", VideoController
   end
 

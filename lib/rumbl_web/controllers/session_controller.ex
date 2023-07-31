@@ -4,10 +4,8 @@ defmodule RumblWeb.SessionController do
     render(conn, "new.html")
   end
 
-  def create(
-    conn,
-    %{"session" => %{"username" => username, "password" => password}}
-  ) do
+  @spec create(Plug.Conn.t(), map) :: Plug.Conn.t()
+  def create(conn, %{"username" => username, "password" => password}) do
     case Rumbl.Accounts.authenticate_by_username_and_pass(username, password) do
       {:ok, user} ->
         conn
